@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:Travel="clr-namespace:Travel"
+             x:Class="Travel.MainPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="Add_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ListView x:Name="listView" HasUnevenRows="true">
+        <ListView.Header>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="List of Cities Visited"
+                            TextColor="Black"
+                            FontSize="Large"
+                            HorizontalOptions="CenterAndExpand"
+                            Padding="10"/>
+            </StackLayout>
+        </ListView.Header>
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="Travel:City">
+                <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem Text="Delete" IsDestructive="True" Clicked="Delete_Clicked" CommandParameter="{Binding .}"/>
+                    </ViewCell.ContextActions>
+                    <Grid Padding="10">
+                        <Frame CornerRadius="20" HasShadow="True" >
+                            <StackLayout>
+                                <Label Text="{Binding Name}"
+                                       Grid.Row="0"
+                                       Grid.ColumnSpan="2"
+                                       BackgroundColor="Green"
+                                       FontSize="Large"
+                                       VerticalOptions="Center"/>
+                                <Label Text="{Binding Country}"
+                                       Grid.Row="1"
+                                       Grid.Column="1"
+                                       BackgroundColor="Black"
+                                       TextColor="White"
+                                       FontSize="Medium"
+                                       VerticalOptions="Center"/>
+                                <Label Text="{Binding Continent}"
+                                       Grid.Row="1"
+                                       Grid.Column="0"
+                                       BackgroundColor="Gray"
+                                       FontSize="Small"
+                                       VerticalOptions="Center"/>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
