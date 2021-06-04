@@ -7,7 +7,14 @@
         <ToolbarItem Text="Add" Clicked="Add_Clicked"/>
     </ContentPage.ToolbarItems>
 
-    <ListView x:Name="listView" HasUnevenRows="true">
+    <StackLayout>
+    <SearchBar Placeholder="Search..." FontAttributes="Italic" TextChanged="SearchBar_TextChanged">
+        
+    </SearchBar>
+    <ListView x:Name="listView" 
+              HasUnevenRows="true" 
+              IsPullToRefreshEnabled="true"
+              Refreshing="listView_Refreshing">
         <ListView.Header>
             <StackLayout Orientation="Horizontal">
                 <Label Text="List of Cities Visited"
@@ -29,20 +36,16 @@
                                 <Label Text="{Binding Name}"
                                        Grid.Row="0"
                                        Grid.ColumnSpan="2"
-                                       BackgroundColor="Green"
                                        FontSize="Large"
                                        VerticalOptions="Center"/>
                                 <Label Text="{Binding Country}"
                                        Grid.Row="1"
                                        Grid.Column="1"
-                                       BackgroundColor="Black"
-                                       TextColor="White"
                                        FontSize="Medium"
                                        VerticalOptions="Center"/>
                                 <Label Text="{Binding Continent}"
                                        Grid.Row="1"
                                        Grid.Column="0"
-                                       BackgroundColor="Gray"
                                        FontSize="Small"
                                        VerticalOptions="Center"/>
                             </StackLayout>
@@ -52,4 +55,6 @@
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
+
+    </StackLayout>
 </ContentPage>
