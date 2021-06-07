@@ -12,9 +12,11 @@ namespace Travel
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddPage : ContentPage
     {
+        private DataBaseService service { get; set; }
         public AddPage()
         {
             InitializeComponent();
+            service = new DataBaseService();
         }
 
         private void Save_Button_Clicked(object sender, EventArgs e)
@@ -26,7 +28,7 @@ namespace Travel
                 Continent = continentEntry.Text
             };
 
-            MainPage.Cities.Add(city);
+            MainPage.Service.AddEntry(city);
             Navigation.PopAsync();
         }
     }

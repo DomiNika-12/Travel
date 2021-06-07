@@ -14,7 +14,11 @@
     <ListView x:Name="listView" 
               HasUnevenRows="true" 
               IsPullToRefreshEnabled="true"
-              Refreshing="listView_Refreshing">
+              Refreshing="listView_Refreshing"
+              ItemSelected="listView_ItemSelected"
+              ItemTapped="listView_ItemTapped"
+              >
+        
         <ListView.Header>
             <StackLayout Orientation="Horizontal">
                 <Label Text="List of Cities Visited"
@@ -26,31 +30,33 @@
         </ListView.Header>
         <ListView.ItemTemplate>
             <DataTemplate x:DataType="Travel:City">
-                <ViewCell>
+                <ViewCell >
                     <ViewCell.ContextActions>
                         <MenuItem Text="Delete" IsDestructive="True" Clicked="Delete_Clicked" CommandParameter="{Binding .}"/>
                     </ViewCell.ContextActions>
-                    <Grid Padding="10">
+                    
+                    <StackLayout Padding="10">
                         <Frame CornerRadius="20" HasShadow="True" >
-                            <StackLayout>
+                            <Grid >
                                 <Label Text="{Binding Name}"
                                        Grid.Row="0"
                                        Grid.ColumnSpan="2"
+                                       Style="{StaticResource labelStyle}"
                                        FontSize="Large"
-                                       VerticalOptions="Center"/>
+                                       />
                                 <Label Text="{Binding Country}"
                                        Grid.Row="1"
                                        Grid.Column="1"
-                                       FontSize="Medium"
-                                       VerticalOptions="Center"/>
+                                       Style="{StaticResource labelStyle}"
+                                       />
                                 <Label Text="{Binding Continent}"
                                        Grid.Row="1"
                                        Grid.Column="0"
-                                       FontSize="Small"
-                                       VerticalOptions="Center"/>
-                            </StackLayout>
+                                       Style="{StaticResource labelStyle}"
+                                       />
+                            </Grid>
                         </Frame>
-                    </Grid>
+                    </StackLayout>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
