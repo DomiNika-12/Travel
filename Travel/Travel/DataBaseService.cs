@@ -4,6 +4,7 @@ using System.Text;
 using SQLite;
 using System.IO;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace Travel
 {
@@ -15,11 +16,11 @@ namespace Travel
         {
             if (connection != null)
                 return;
-
-            string _databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDatabase.db");
-            connection = new SQLiteAsyncConnection(_databasePath);
+            var documentsPath = ApplicationData.Current.LocalFolder.Path;
+            var path = Path.Combine(documentsPath, "MySQLite.db3");
+            //string _databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDatabase.db");
+            connection = new SQLiteAsyncConnection(path);
             await connection.CreateTableAsync<City>();
-
         }
 
         public async void AddEntry(City city)

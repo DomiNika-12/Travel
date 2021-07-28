@@ -2,13 +2,31 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Travel.AddPage">
-    <StackLayout>
+    <StackLayout BackgroundColor="#cbbeb5">
+        <Grid Padding="20,200,20,20">
+            <Entry x:Name="nameEntry" 
+                   Placeholder="Name"
+                   Grid.Row="0"
+                   Grid.Column="0"/>
+            <Entry x:Name="continentEntry" 
+                   Placeholder="Continent" 
+                   Grid.Row="1"
+                   Grid.Column="0"/>
+            <Entry x:Name="countryEntry" 
+                   Placeholder="Country" 
+                   Grid.Row="2"
+                   Grid.Column="0"/>
+        </Grid>
+        
 
-        <Entry x:Name="nameEntry" Placeholder="Name"/>
-        <Entry x:Name="continentEntry" Placeholder="Continent"/>
-        <Entry x:Name="countryEntry" Placeholder="Country"/>
-
-        <Button Text="Save" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="Save_Button_Clicked"/>
+        <Button Text="Save"
+                TextColor="black"
+                FontAttributes="Bold"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="Center"
+                BackgroundColor="#525266"
+                CornerRadius="20"
+                Clicked="Save_Button_Clicked"/>
 
     </StackLayout>
 </ContentPage>

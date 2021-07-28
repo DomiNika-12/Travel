@@ -7,22 +7,17 @@
         <ToolbarItem Text="Add" Clicked="Add_Clicked"/>
     </ContentPage.ToolbarItems>
 
-    <StackLayout>
-    <SearchBar Placeholder="Search..." FontAttributes="Italic" TextChanged="SearchBar_TextChanged">
-        
-    </SearchBar>
+    <StackLayout BackgroundColor="#cbbeb5">
     <ListView x:Name="listView" 
               HasUnevenRows="true" 
               IsPullToRefreshEnabled="true"
               Refreshing="listView_Refreshing"
-              ItemSelected="listView_ItemSelected"
-              ItemTapped="listView_ItemTapped"
               >
         
         <ListView.Header>
             <StackLayout Orientation="Horizontal">
                 <Label Text="List of Cities Visited"
-                            TextColor="Black"
+                            TextColor="#423f3b"
                             FontSize="Large"
                             HorizontalOptions="CenterAndExpand"
                             Padding="10"/>
@@ -39,17 +34,20 @@
                         <Frame CornerRadius="20" HasShadow="True" >
                             <Grid >
                                 <Label Text="{Binding Name}"
+                                       TextColor="#ff6666"
                                        Grid.Row="0"
                                        Grid.ColumnSpan="2"
                                        Style="{StaticResource labelStyle}"
                                        FontSize="Large"
                                        />
                                 <Label Text="{Binding Country}"
+                                       TextColor="#423f3b"
                                        Grid.Row="1"
                                        Grid.Column="1"
                                        Style="{StaticResource labelStyle}"
                                        />
                                 <Label Text="{Binding Continent}"
+                                       TextColor="#423f3b"
                                        Grid.Row="1"
                                        Grid.Column="0"
                                        Style="{StaticResource labelStyle}"
@@ -61,6 +59,5 @@
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
-
     </StackLayout>
 </ContentPage>

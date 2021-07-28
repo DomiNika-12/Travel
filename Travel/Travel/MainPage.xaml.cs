@@ -38,17 +38,10 @@ namespace Travel
             listView.ItemsSource = Cities;
         }
 
-        private ObservableCollection<City> SearchData(string searchText = null)
+        private void listView_Refreshing(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(searchText))
-            {
-                return Cities;
-            }
-
-            IEnumerable<City> temp = Cities.Where(c => c.Name.StartsWith(searchText));
-            ObservableCollection<City> cities = new ObservableCollection<City>(temp);
-
-            return cities;
+            //Refresh by calling method (To Do)
+            listView.EndRefresh();
         }
 
         private void Add_Clicked(object sender, EventArgs e)
@@ -60,29 +53,7 @@ namespace Travel
         {
             City city = (sender as MenuItem).CommandParameter as City;
             Service.DeleteEntry(city.Id);
-
-        }
-
-        private void listView_Refreshing(object sender, EventArgs e)
-        {
-            //Refresh by calling method (To Do)
-            listView.EndRefresh();
-        }
-
-        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var tempCities = SearchData(e.NewTextValue);
-            listView.ItemsSource = tempCities;
-        }
-
-        private void listView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-
-        }
-
-        private void listView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-
+            Cities.Remove(city);
         }
     }
 }
